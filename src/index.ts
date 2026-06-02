@@ -5,7 +5,7 @@ const app = new Hono()
 app.get('/', (c) => {
   return c.json({
     success: true,
-    message: 'Hello from Hono on Cloudflare Workers!'
+    message: 'Hello from Hono on Cloudflare Workers via github...!'
   })
 })
 
