@@ -2,7 +2,13 @@ import { Hono } from 'hono'
 
 const app = new Hono()
 
-app.get('/', (c) => {
+app.get('/', async (c) => {
+  await c.env.MY_QUEUE.send({
+    url: c.req.url,
+    method: c.req.method,
+    headers: Object.fromEntries(c.req.raw.headers),
+  })
+  
   return c.json({
     success: true,
     message: 'Hello from Hono on Cloudflare Workers via github...!'
